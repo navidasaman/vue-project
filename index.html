@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Vue</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <h1>Hej</h1>
+
+  <div id="app">
+  <!--  HOW TO CHANGE DYNAMIC VALUES-->  
+    <!-- <h2>template from index.html</h2> -->
+    <p>{{ dynamicValue }} - {{ anotherDynamicValue}} - {{ thirdDynamicValue}}</p>
+    <p>example: {{  person[0].name }} {{  person[0].lastname }}</p>
+    <!-- To change the dynamic value, onclick event -->
+    Favourite number: {{ number }}
+    <button v-on:click="number++">Increase</button>
+    <button v-on:click="number--">Decrease</button>
+  </p>
+    <p>example2: {{  person[1].name }} {{  person[1].lastname }}</p>
+    <!-- Another way to do it -->
+    <div @click="dynamicValue = 'hello'">click on me =D,</div>
+    <!-- Third way to do it, from app.js-->
+    <div @click="changeAnotherDynamicValue">click on me too</div>
+    <!-- Fourth way to do it, from app.js-->
+    <div @click="changeThirdDynamicValue('Changed from within app.js and argument passed inside the html page')">click on me third</div>
+
+  <!-- IF STATEMENTS, adds/removes from DOM - more expensive and time consuming, more for ex if user is logged in (value which doesnt change often)-->
+    <div v-if="ifStatementBoolean">
+      <span v-if="toggleBoolean">Show only if true</span>
+    </div>
+
+    <button v-on:click="toggleBoolean">toggle boolean
+      <span v-if="ifStatementBoolean">press to make it false</span>
+      <span v-else>press to make it true</span>
+    </button>
+  <!-- ANOTHER WAY TO DO IT THROUGH V-SHOW, css make it display:none, less expensive-->
+  <div v-show="!ifStatementBoolean">This will show when ifStatementBoolean is false.</div>
+  
+  <!-- DYNAMIC LINKS AND IMAGE-->
+    <a bind:href="">click me</a>
+
+  <!-- FOR LOOP-->
+    <div v-for="person in persons">
+      <img :src="person.img" :alt="person.name">
+    </div>
+
+</div>
+  <script src="app.js"></script>
+
+</body>
+</html>
